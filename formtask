@@ -1,0 +1,115 @@
+import React from 'react';
+import './style.css';
+
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      user: {
+        name1: '',
+        email: '',
+        mobile: '',
+        pass: '',
+        degree:'',
+        city:'',
+      },
+    };
+  }
+  changeName = (event) => {
+    
+    this.setState({ name1: event.target.value });
+  };
+  changeEmail = (event) => {
+    this.setState({ email: event.target.value });
+    console.log('hi');
+  };
+  changeMobile = (event) => {
+    this.setState({ mobile: event.target.value });
+  };
+  changePass = (event) => {
+    this.setState({ pass: event.target.value });
+  };
+  changeDegree = (event) =>{
+    this.setState({Degree:event.target.value});
+  };
+  submitData = () => {
+    alert(
+      ` Name is ${this.state.name1}
+        Email is ${this.state.email}
+        Mobile is ${this.state.mobile} 
+        Degree is ${this.state.Degree}
+        Technology is ${this.state.Technology}`
+      
+    );
+  };
+  render() {
+    return (
+      <div> 
+        <form onSubmit={this.submitData}>
+          Name :{' '}
+          <input
+            type="text"
+            value={this.state.name1}
+            onChange={this.changeName}
+          /><br/>
+          <br/>
+          Email :{' '}
+          <input
+            type="text"
+            value={this.state.email}
+            onChange={this.changeEmail}
+          /><br/>
+          <br/>
+          Mobile:{' '}
+          <input
+            type="text"
+            value={this.state.mobile}
+            onChange={this.changeMobile}
+          /><br/>
+          <br/>
+          Password:{' '}
+          <input
+            type="text"
+            value={this.state.pass}
+            onChange={this.changePass}
+          /><br/><br/>
+          <radio className="radio"/>
+          <label>Degree: </label>        
+         
+          Bachelor:
+          <input  type="radio"
+            checked={this.state.Degree === 'Bachelor'}
+            onChange={this.changeDegree}
+            value="Bachelor"/>
+          Masters:
+          <input  type="radio"
+            checked={this.state.Degree === 'Masters'}
+            onChange={this.changeDegree}
+            value="Masters"/>
+          <br/><br/>
+          Technology:
+        
+          <select 
+            defaultValue="select"
+            checked={this.state.checked}
+            value={this.state.Technology}
+            onChange={this.changeTechnology}>
+            <option>select</option> 
+            <option>java</option>
+            <option>html</option>
+            <option>css</option>
+            <option>javascript</option>
+            <option>Sql</option>
+          </select>
+
+          <br/>
+          <br/>
+          <input type="submit" value="submit" />
+        </form>
+      </div>
+    );
+  }
+}
+
+
+
